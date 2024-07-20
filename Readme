@@ -1,0 +1,8 @@
+310  docker build -t monihub/todo-backend:latest -f backend/Dockerfile .
+  311  docker build -t monihub/todo-frontend:latest -f frontend/Dockerfile .
+  312  clear
+  313  docker push  monihub/todo-frontend:latest
+  314  docker push  monihub/todo-backend:latest
+
+
+  
