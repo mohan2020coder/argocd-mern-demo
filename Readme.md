@@ -7,6 +7,13 @@
     ```sh
     git clone https://github.com/mohan2020coder/argocd-mern-demo.git
     cd argocd-mern-demo
+
+    cd frontend
+    npm install
+
+    cd ..
+    cd backend
+    npm install
     ```
 
 2. **Install required tools:**
