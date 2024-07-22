@@ -48,7 +48,8 @@
 
 2. **Build and Push Backend Image:**
     ```sh
-    docker build -t monihub/todo-backend:latest -f backend/Dockerfile .
+    cd backend
+    docker build -t monihub/todo-backend:latest .
     docker push monihub/todo-backend:latest
 
 
@@ -92,7 +93,8 @@
 
 5. **Build and Push Frontend Image:**
     ```sh
-    docker build -t monihub/todo-frontend:latest -f frontend/Dockerfile .
+    cd frontend
+    docker build -t monihub/todo-frontend:latest .
     docker push monihub/todo-frontend:latest
     ```
 
