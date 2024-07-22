@@ -1,7 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mongo
+  name: mongo-develoyment
+  namespace: todo-app
+  labels:
+    app: mongo
 spec:
   replicas: 1
   selector:
@@ -17,13 +20,24 @@ spec:
           image: mongo:latest
           ports:
             - containerPort: 27017
+          volumeMounts:
+            - name: mongo-storage
+              mountPath: /data/db
+    volumes:
+        - name: mongo-storage
+          persistentVolumeClaim:
+            claimName: mongo-pvc
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: mongo
+  name: mongo-service
+  namespace: todo-app
 spec:
-  ports:
-    - port: 27017
   selector:
     app: mongo
+  ports:
+    - port: 27017
+      targetPort: 27017
+      protocol: TCP
+  

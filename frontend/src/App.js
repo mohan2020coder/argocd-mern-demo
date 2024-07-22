@@ -6,11 +6,11 @@ function App() {
   const [newTodo, setNewTodo] = useState('');
 
   useEffect(() => {
-    axios.get('http://backend:5000/todos').then(response => setTodos(response.data));
+    axios.get('http://127.0.0.1:31100/todos').then(response => setTodos(response.data));
   }, []);
 
   const addTodo = () => {
-    axios.post('http://backend:5000/todos', { text: newTodo }).then(response => {
+    axios.post('http://127.0.0.1:31100/todos', { text: newTodo }).then(response => {
       setTodos([...todos, response.data]);
       setNewTodo('');
     });
