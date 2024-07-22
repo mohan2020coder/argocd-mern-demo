@@ -52,7 +52,7 @@
     docker push monihub/todo-backend:latest
 
 
-##sync backend deploy and service
+
 
 3. **Sync Backend Deployment and Service in ArgoCD.**
 
