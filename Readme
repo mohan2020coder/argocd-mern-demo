@@ -1,8 +1,75 @@
-310  docker build -t monihub/todo-backend:latest -f backend/Dockerfile .
-  311  docker build -t monihub/todo-frontend:latest -f frontend/Dockerfile .
-  312  clear
-  313  docker push  monihub/todo-frontend:latest
-  314  docker push  monihub/todo-backend:latest
+
+#Clone the repo 
+
+##install kubectl, minikube and argocd and cli
+
+#create a app in argocd , manuall sync ->
+
+##sync pv, pvc and mongo deploy and service
 
 
-  
+#Build the build backend
+docker build -t monihub/todo-backend:latest -f backend/Dockerfile .
+docker push  monihub/todo-backend:latest
+
+
+##sync backend deploy and service
+
+minikube service list -n todo-app
+
+
+
+   minikube service list -n todo-app
+|-----------|------------------|--------------|-----|
+| NAMESPACE |       NAME       | TARGET PORT  | URL |
+|-----------|------------------|--------------|-----|
+| todo-app  | backend-service  |         5000 |     |
+| todo-app  | frontend-service |           80 |     |
+| todo-app  | mongo-service    | No node port |     |
+|-----------|------------------|--------------|-----|
+
+
+ minikube service backend-service -n todo-app
+|-----------|-----------------|-------------|---------------------------|
+| NAMESPACE |      NAME       | TARGET PORT |            URL            |
+|-----------|-----------------|-------------|---------------------------|
+| todo-app  | backend-service |        5000 | http://192.168.49.2:31100 |
+|-----------|-----------------|-------------|---------------------------|
+🏃  Starting tunnel for service backend-service.
+|-----------|-----------------|-------------|------------------------|
+| NAMESPACE |      NAME       | TARGET PORT |          URL           |
+|-----------|-----------------|-------------|------------------------|
+| todo-app  | backend-service |             | http://127.0.0.1:36635 |
+|-----------|-----------------|-------------|------------------------|
+🎉  Opening service todo-app/backend-service in default browser...
+👉  http://127.0.0.1:36635
+
+
+#Copy the url http://127.0.0.1:36635 paste in the App.js( frontend )
+
+
+#Build the build frontend
+docker build -t monihub/todo-frontend:latest -f frontend/Dockerfile .
+
+docker push  monihub/todo-frontend:latest
+
+
+##sync frontend deploy and service
+
+minikube service frontend-service -n todo-app
+
+
+minikube service frontend-service -n todo-app
+|-----------|------------------|-------------|---------------------------|
+| NAMESPACE |       NAME       | TARGET PORT |            URL            |
+|-----------|------------------|-------------|---------------------------|
+| todo-app  | frontend-service |          80 | http://192.168.49.2:31000 |
+|-----------|------------------|-------------|---------------------------|
+🏃  Starting tunnel for service frontend-service.
+|-----------|------------------|-------------|------------------------|
+| NAMESPACE |       NAME       | TARGET PORT |          URL           |
+|-----------|------------------|-------------|------------------------|
+| todo-app  | frontend-service |             | http://127.0.0.1:46139 |
+|-----------|------------------|-------------|------------------------|
+🎉  Opening service todo-app/frontend-service in default browser...
+👉  http://127.0.0.1:46139
