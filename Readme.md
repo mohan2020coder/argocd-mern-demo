@@ -107,7 +107,7 @@
     ```
 
 
-#6. **Sync Frontend Deployment and Service in ArgoCD.**
+6. **Sync Frontend Deployment and Service in ArgoCD.**
 
 7. **Get Frontend Service URL:**
     ```sh
@@ -115,8 +115,6 @@
     ```
 
    
-
-
 
 |-----------|------------------|-------------|---------------------------|
 | NAMESPACE |       NAME       | TARGET PORT |            URL            |
