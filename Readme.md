@@ -58,6 +58,7 @@
     cd backend
     docker build -t monihub/todo-backend:latest .
     docker push monihub/todo-backend:latest
+    ```
 
 
 
@@ -79,7 +80,7 @@
 
   ```sh
     minikube service backend-service -n todo-app
-    ```
+  ```
 |-----------|-----------------|-------------|---------------------------|
 | NAMESPACE |      NAME       | TARGET PORT |            URL            |
 |-----------|-----------------|-------------|---------------------------|
